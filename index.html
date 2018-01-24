@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokemon RPG Game</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="logo">
+            <img src="assets/images/pokemon-logo.png" alt="Pokemon logo">
+        </div>
+        <div id="audio">
+            <button class="audio-play">Play song!</button>
+            <button class="audio-pause">Pause</button>
+        </div>
+        <div id="choose">
+            <h3>Choose one Pokemon</h3>
+        </div>
+        <div id="pokemons">
+            <button id="pkm-1" class="pkm">
+                <img src="assets/images/pkm-pikachu.png" alt="Pikachu">
+                <span>Pikachu</span>
+            </button>
+            <button id="pkm-2" class="pkm">
+                <img src="assets/images/pkm-bulbasaur.png" alt="Bulbasaur">
+                <span>Bulbasaur</span>
+            </button>
+            <button id="pkm-3" class="pkm">
+                <img src="assets/images/pkm-ponyta.png" alt="Ponyta">
+                <span>Ponyta</span>
+            </button>
+            <button id="pkm-4" class="pkm">
+                <img src="assets/images/pkm-charmander.png" alt="Charmander">
+                <span>Charmander</span>
+            </button>
+            <button id="pkm-5" class="pkm">
+                <img src="assets/images/pkm-squirtle.png" alt="Squirtle">
+                <span>Squirtle</span>
+            </button>
+            <button id="pkm-6" class="pkm">
+                <img src="assets/images/pkm-weddle.png" alt="Weddle">
+                <span>Weddle</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            // Gets Link for Theme Song
+            var audioElement = document.createElement("audio");
+            audioElement.setAttribute("src", "assets/audio.mp3");
+
+            // Play song button
+            $(".audio-play").on("click", function () {
+                audioElement.play();
+            });
+            // Pause song button
+            $(".audio-pause").on("click", function () {
+                audioElement.pause();
+            });
+
+        })
+    </script>
+    <!-- <script src="javascript/game.js" async></script> -->
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+body {
+  background: url('../images/background.jpg') no-repeat center center fixed;
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande',
+    sans-serif;
+  webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 960px;
+  text-align: center;
+}
+
+.logo img {
+  margin-top: 30px;
+  width: 40%;
+}
+
+#choose h3 {
+  color: white;
+  margin-top: 40px;
+}
+
+#pokemons {
+  margin-top: 50px;
+}
+
+#pokemons button img {
+  width: 100px;
+  height: 100px;
+}
+
+.pkm {
+  background: white;
+  height: 130px;
+  width: 130px;
+}
