@@ -20,7 +20,7 @@
             <button class="audio-play">Play song!</button>
             <button class="audio-pause">Pause</button>
         </div>
-        <div id="choose">
+        <div id="pick-one">
             <h3>Choose one Pokemon</h3>
         </div>
         <div id="pokemons">
@@ -70,22 +70,22 @@
 
             // Pokemons
             $('#pkm-1').on('click', function () {
-                $('.chosen').prepend('<img class="your-choose" src="assets/images/pkm-pikachu.png" prepended="yes"/>')
+                $('.chosen').prepend('<img class="your-choice" src="assets/images/pkm-pikachu.png" prepended="yes"/>' + '<div class="hp"><h3>' + 100 + '</h3 ></div > ')
             })
             $('#pkm-2').on('click', function () {
-                $('.chosen').prepend('<img class="your-choose" src="assets/images/pkm-bulbasaur.png" prepended="yes"/>')
+                $('.chosen').prepend('<img class="your-choice" src="assets/images/pkm-bulbasaur.png" prepended="yes"/>')
             })
             $('#pkm-3').on('click', function () {
-                $('.chosen').prepend('<img class="your-choose" src="assets/images/pkm-ponyta.png" prepended="yes"/>')
+                $('.chosen').prepend('<img class="your-choice" src="assets/images/pkm-ponyta.png" prepended="yes"/>')
             })
             $('#pkm-4').on('click', function () {
-                $('.chosen').prepend('<img class="your-choose" src="assets/images/pkm-charmander.png" prepended="yes"/>')
+                $('.chosen').prepend('<img class="your-choice" src="assets/images/pkm-charmander.png" prepended="yes"/>')
             })
             $('#pkm-5').on('click', function () {
-                $('.chosen').prepend('<img class="your-choose" src="assets/images/pkm-squirtle.png" prepended="yes"/>')
+                $('.chosen').prepend('<img class="your-choice" src="assets/images/pkm-squirtle.png" prepended="yes"/>')
             })
             $('#pkm-6').on('click', function () {
-                $('.chosen').prepend('<img class="your-choose" src="assets/images/pkm-weddle.png" prepended="yes"/>')
+                $('.chosen').prepend('<img class="your-choice" src="assets/images/pkm-weddle.png" prepended="yes"/>')
             })
         })
     </script>
