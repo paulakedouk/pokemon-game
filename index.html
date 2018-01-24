@@ -49,6 +49,7 @@
                 <span>Weddle</span>
             </button>
         </div>
+        <div class="chosen"></div>
     </div>
 
     <script>
@@ -67,6 +68,10 @@
                 audioElement.pause();
             });
 
+            // Pokemon
+            $('#pkm-1').on('click', function () {
+                $('.chosen').prepend('<img class="your-choose" src="assets/images/pkm-pikachu.png" prepended="yes"/>')
+            })
         })
     </script>
     <!-- <script src="javascript/game.js" async></script> -->

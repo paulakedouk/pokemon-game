@@ -39,3 +39,9 @@ body {
   height: 130px;
   width: 130px;
 }
+
+.your-choose {
+  width: 300px;
+  margin-top: 40px;
+  float: left;
+}
