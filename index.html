@@ -164,7 +164,7 @@
                 var enemyDiv = $('<div class="enemy">');
                 var enemyName = $('<span>Onix</span>')
                 var enemyImg = $('<img src="assets/images/pkm-enemy.png" alt="Enemy" />');
-                var enemyHp = $('<div class="hp-enemy">' + 210 + '</div>');
+                var enemyHp = $('<div class="hp-enemy">' + 190 + '</div>');
                 $("#pokemons").css("display", "inline-block");
 
                 $('.enemies').append(enemyDiv);
@@ -181,7 +181,7 @@
                         gameObj.attackDone = true;
 
                         var pkmAttack = (Math.floor(Math.random() * 55));
-                        var enemyAttack = (Math.floor(Math.random() * 70));
+                        var enemyAttack = (Math.floor(Math.random() * 60));
 
                         var currentEnemyHp = $(enemyHp).text();
                         currentEnemyHp = currentEnemyHp - pkmAttack;
