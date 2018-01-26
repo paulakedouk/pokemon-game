@@ -45,6 +45,7 @@ body {
   border: 1px solid gray;
   height: 150px;
   width: 130px;
+  cursor: pointer;
 }
 
 .pkm-chosen {
@@ -106,4 +107,5 @@ body {
   border-radius: 15px;
   margin: 0 auto;
   visibility: hidden;
+  cursor: pointer;
 }
