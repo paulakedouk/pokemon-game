@@ -30,6 +30,7 @@
             <div class="enemies"></div>
         </div>
         <div id="attack"></div>
+        <div id="attack-text"></div>
 
     </div>
 
@@ -195,6 +196,9 @@
                             alert('You WIN!');
                             location.reload();
                         }
+
+                        $('#attack-text').html('<h2> You attack Onix with ' + pkmAttack + ' damage')
+                        $('#attack-text').append('<h2> Onix attack you back for ' + enemyAttack + ' damage')
                     }
                 })
 
