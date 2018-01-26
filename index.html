@@ -48,12 +48,12 @@
                 <img src="assets/images/pkm-weddle.png" alt="Weddle">
                 <span>Weddle</span>
             </button> -->
-        </div>
-        <div class="chosen">
-            <div class="your-choice"></div>
-        </div>
-        <div class="enemy-random">
-            <div class="enemy-item"></div>
+            <div class="pkm-chosen">
+                <div class="your-choice"></div>
+            </div>
+            <div class="enemies">
+                <div class="enemy-random"></div>
+            </div>
         </div>
 
     </div>
@@ -143,34 +143,53 @@
             console.log(gameObj.pokemonsList)
 
             // Pokemon list
-            function pokemonList() {
-                var pkmArrayList = gameObj.pokemonsList;
+            var pkmArrayList = gameObj.pokemonsList;
 
-                for (var i = 0; i < pkmArrayList.length; i++) {
-                    var pokemonDiv = $('<div class="pkm" id="pkm-' + pkmArrayList[i].id + '"></div>')
+            for (var i = 0; i < pkmArrayList.length; i++) {
+                var pokemonDiv = $('<div class="pkm" id="pkm-' + pkmArrayList[i].id + '"></div>')
 
-                    var pokemonImg = $('<img src="' + pkmArrayList[i].image + '" alt="' + pkmArrayList[i].name + '"/>')
-                    var pokemonName = $('<span>' + pkmArrayList[i].name + '</span>');
+                var pokemonImg = $('<img src="' + pkmArrayList[i].image + '" alt="' + pkmArrayList[i].name + '"/>')
+                var pokemonName = $('<span>' + pkmArrayList[i].name + '</span>');
+                var pokemonHp = $('<div class="hp">HP: ' + pkmArrayList[i].hp + '</div>')
 
-                    var appendDiv = $('#pokemons').append(pokemonDiv);
-                    $(pokemonDiv).html(pokemonImg).append(pokemonName);
-                }
+                var appendDiv = $('#pokemons').append(pokemonDiv);
+                $(pokemonDiv).html(pokemonImg).append(pokemonName, pokemonHp)
             }
-            pokemonList();
 
             // Select pokemon
-            function yourPokemon() {
-                $("#pokemons").on("click", ".pkm", function () {
-                    var chosen = $(this).attr('id');
-                    var img = $(this).children()[0];
-                    console.log(img);
-                    var imgChildren = $('.your-choice').html(img);
-                    $(imgChildren).attr('class', 'your-choice-item')
-                })
-            }
-            yourPokemon();
+
+            $("#pokemons").on("click", ".pkm", function () {
+                // Get the pokemon id clicked
+                var chosen = $(this).attr('id');
+
+                // Get the pokemon img and hp clicked
+                var img = $(this).children()[0];
+                var hp = $(this).children()[2];
+
+                // Add that image to the class your-choice
+                var imgChildren = $('.your-choice').append(img);
+                var hpChildren = $('.your-choice').append(hp);
+                // Set new class to the image
+                $(imgChildren).attr('class', 'your-choice-item')
+                $(hpChildren).addClass('hp-below');
+            })
+
+
+
+
+
 
             // Select enemy 
+            // $('#enemies').on('click', '.pkm', function (e) {
+            //     var element = $(this);
+            //     var enemyIndex = element.data('enemy-index');
+            //     if (!gameObj.enemy) {
+            //         gameObj.winHp = false;
+            //         gameObj.attackDone = false;
+            //         gameObj.enemy = gameObj.pokemonsList.splice(enemyIndex, 1)[0]
+            //     }
+            // })
+
 
         })
     </script>
