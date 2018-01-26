@@ -27,10 +27,9 @@
             <div class="pkm-chosen">
                 <div class="your-choice"></div>
             </div>
-            <div class="enemies">
-
-            </div>
+            <div class="enemies"></div>
         </div>
+        <div id="attack"></div>
 
     </div>
 
@@ -160,8 +159,15 @@
                 $('.enemies').append(enemyDiv);
                 $(enemyDiv).html(enemyImg).append(enemyName, enemyHp)
 
+                $('#attack').html('<div class="attack">Attack!</div>');
+                $("#attack").css("visibility", "visible");
+
+
                 $('.pkm').remove()
             })
+
+            // Attack button
+
 
         })
     </script>

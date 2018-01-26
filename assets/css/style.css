@@ -13,6 +13,7 @@ body {
   margin: 0 auto;
   max-width: 960px;
   text-align: center;
+  margin-bottom: 100px;
 }
 
 .logo img {
@@ -75,7 +76,6 @@ body {
 .enemy {
   background: white;
   width: 300px;
-  margin-bottom: 70px;
   padding: 20px;
   border-radius: 30px;
 }
@@ -88,7 +88,6 @@ body {
 .hp-below {
   background: white;
   width: 300px;
-  margin-bottom: 70px;
   padding: 20px;
   border-radius: 30px;
   position: absolute;
@@ -96,4 +95,14 @@ body {
 
 .hp h3 {
   font-weight: 600;
+}
+
+#attack {
+  background: red;
+  color: white;
+  width: 50px;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 0 auto;
+  visibility: hidden;
 }
