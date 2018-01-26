@@ -46,8 +46,8 @@
                         name: 'Pikachu',
                         image: 'assets/images/pkm-pikachu.png',
                         hp: 200,
-                        attack: 10,
-                        counterAttack: 20
+                        attack: 12,
+                        counterAttack: 33
                     },
                     {
                         id: 2,
@@ -92,8 +92,14 @@
                 ],
                 gameStart: true,
                 yourPokemon: null,
-                enemy: null,
+                enemy: [
+                    {
+                        hp: 210,
+                        attack: 33,
+                    }
+                ],
                 currentAttack: null
+
             }
         }
 
@@ -105,6 +111,9 @@
 
             // Global variables
             var pkmArrayList = gameObj.pokemonsList;
+            var enemyArrayList = gameObj.enemy;
+
+            console.log(enemyArrayList)
 
             // Play song button
             $(".audio-play").on("click", function () {
@@ -115,32 +124,27 @@
                 audioElement.pause();
             });
 
-            console.log(gameObj.pokemonsList)
-
             // Pokemon list
-            var pkmArrayList = gameObj.pokemonsList;
-
             for (var i = 0; i < pkmArrayList.length; i++) {
                 var pokemonDiv = $('<div class="pkm" id="pkm-' + pkmArrayList[i].id + '"></div>')
 
                 var pokemonImg = $('<img src="' + pkmArrayList[i].image + '" alt="' + pkmArrayList[i].name + '"/>')
                 var pokemonName = $('<span>' + pkmArrayList[i].name + '</span>');
-                var pokemonHp = $('<div class="hp">HP: ' + pkmArrayList[i].hp + '</div>')
+                var pokemonHp = $('<div class="hp">' + pkmArrayList[i].hp + '</div>')
 
                 $('#pokemons').append(pokemonDiv);
                 $(pokemonDiv).html(pokemonImg).append(pokemonName, pokemonHp)
-
             }
-
 
             // Select pokemon
             $("#pokemons").on("click", ".pkm", function () {
                 // Get the pokemon id clicked
-                var chosen = $(this).attr('id');
+                var currentPkm = $(this)
 
                 // Get the pokemon img and hp clicked
                 var img = $(this).children()[0];
                 var hp = $(this).children()[2];
+
 
                 // Add that image to the class your-choice
                 var imgChildren = $('.your-choice').append(img);
@@ -153,7 +157,7 @@
                 var enemyDiv = $('<div class="enemy">');
                 var enemyName = $('<span>Onix</span>')
                 var enemyImg = $('<img src="assets/images/pkm-enemy.png" alt="Enemy" />');
-                var enemyHp = $('<div class="hp">HP: 200</div>');
+                var enemyHp = $('<div class="hp-enemy">' + 200 + '</div>');
                 $("#pokemons").css("display", "inline-block");
 
                 $('.enemies').append(enemyDiv);
@@ -162,11 +166,38 @@
                 $('#attack').html('<div class="attack">Attack!</div>');
                 $("#attack").css("visibility", "visible");
 
-
                 $('.pkm').remove()
+
+                // Attack button
+
+
+                $('#attack').on('click', function (e) {
+                    if (this.id == 'attack') {
+                        gameObj.attackDone = true;
+
+                        for (var i = 0; i < pkmArrayList.length; i++) {
+                            var pkmAttack = pkmArrayList[i].attack;
+                        }
+
+                        for (var i = 0; i < enemyArrayList.length; i++) {
+                            var enemyAttack = enemyArrayList[i].attack;
+                        }
+
+                        var currentEnemyHp = $(enemyHp).text();
+                        currentEnemyHp = currentEnemyHp - pkmAttack;
+                        $('.hp-enemy').text(currentEnemyHp);
+                        console.log(currentEnemyHp)
+
+                        var currentYourHp = $(hp).text();
+                        currentYourHp = currentYourHp - enemyAttack;
+                        $('.hp').text(currentYourHp);
+
+                    }
+                })
+
             })
 
-            // Attack button
+
 
 
         })

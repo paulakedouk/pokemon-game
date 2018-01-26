@@ -80,7 +80,8 @@ body {
   border-radius: 30px;
 }
 
-.hp {
+.hp,
+.hp-enemy {
   margin-top: 8px;
   font-weight: 600;
 }
