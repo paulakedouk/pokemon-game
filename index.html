@@ -24,35 +24,11 @@
             <h3>Choose one Pokemon</h3>
         </div>
         <div id="pokemons">
-            <!-- <button id="pkm-1" class="pkm" value="1">
-                <img src="assets/images/pkm-pikachu.png" alt="Pikachu">
-                <span>Pikachu</span>
-            </button>
-            <button id="pkm-2" class="pkm" value="2">
-                <img src="assets/images/pkm-bulbasaur.png" alt="Bulbasaur">
-                <span>Bulbasaur</span>
-            </button>
-            <button id="pkm-3" class="pkm" value="3">
-                <img src="assets/images/pkm-ponyta.png" alt="Ponyta">
-                <span>Ponyta</span>
-            </button>
-            <button id="pkm-4" class="pkm" value="4">
-                <img src="assets/images/pkm-charmander.png" alt="Charmander">
-                <span>Charmander</span>
-            </button>
-            <button id="pkm-5" class="pkm" value="5">
-                <img src="assets/images/pkm-squirtle.png" alt="Squirtle">
-                <span>Squirtle</span>
-            </button>
-            <button id="pkm-6" class="pkm" value="6">
-                <img src="assets/images/pkm-weddle.png" alt="Weddle">
-                <span>Weddle</span>
-            </button> -->
             <div class="pkm-chosen">
                 <div class="your-choice"></div>
             </div>
             <div class="enemies">
-                <div class="enemy-random"></div>
+
             </div>
         </div>
 
@@ -152,12 +128,13 @@
                 var pokemonName = $('<span>' + pkmArrayList[i].name + '</span>');
                 var pokemonHp = $('<div class="hp">HP: ' + pkmArrayList[i].hp + '</div>')
 
-                var appendDiv = $('#pokemons').append(pokemonDiv);
+                $('#pokemons').append(pokemonDiv);
                 $(pokemonDiv).html(pokemonImg).append(pokemonName, pokemonHp)
+
             }
 
-            // Select pokemon
 
+            // Select pokemon
             $("#pokemons").on("click", ".pkm", function () {
                 // Get the pokemon id clicked
                 var chosen = $(this).attr('id');
@@ -170,26 +147,21 @@
                 var imgChildren = $('.your-choice').append(img);
                 var hpChildren = $('.your-choice').append(hp);
                 // Set new class to the image
-                $(imgChildren).attr('class', 'your-choice-item')
+                $(imgChildren).attr('class', 'your-choice-item');
                 $(hpChildren).addClass('hp-below');
+
+                // Enemy
+                var enemyDiv = $('<div class="enemy">');
+                var enemyName = $('<span>Onix</span>')
+                var enemyImg = $('<img src="assets/images/pkm-enemy.png" alt="Enemy" />');
+                var enemyHp = $('<div class="hp">HP: 200</div>');
+                $("#pokemons").css("display", "inline-block");
+
+                $('.enemies').append(enemyDiv);
+                $(enemyDiv).html(enemyImg).append(enemyName, enemyHp)
+
+                $('.pkm').remove()
             })
-
-
-
-
-
-
-            // Select enemy 
-            // $('#enemies').on('click', '.pkm', function (e) {
-            //     var element = $(this);
-            //     var enemyIndex = element.data('enemy-index');
-            //     if (!gameObj.enemy) {
-            //         gameObj.winHp = false;
-            //         gameObj.attackDone = false;
-            //         gameObj.enemy = gameObj.pokemonsList.splice(enemyIndex, 1)[0]
-            //     }
-            // })
-
 
         })
     </script>
