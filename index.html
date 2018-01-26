@@ -24,39 +24,41 @@
             <h3>Choose one Pokemon</h3>
         </div>
         <div id="pokemons">
-            <button id="pkm-1" class="pkm">
+            <!-- <button id="pkm-1" class="pkm" value="1">
                 <img src="assets/images/pkm-pikachu.png" alt="Pikachu">
                 <span>Pikachu</span>
             </button>
-            <button id="pkm-2" class="pkm">
+            <button id="pkm-2" class="pkm" value="2">
                 <img src="assets/images/pkm-bulbasaur.png" alt="Bulbasaur">
                 <span>Bulbasaur</span>
             </button>
-            <button id="pkm-3" class="pkm">
+            <button id="pkm-3" class="pkm" value="3">
                 <img src="assets/images/pkm-ponyta.png" alt="Ponyta">
                 <span>Ponyta</span>
             </button>
-            <button id="pkm-4" class="pkm">
+            <button id="pkm-4" class="pkm" value="4">
                 <img src="assets/images/pkm-charmander.png" alt="Charmander">
                 <span>Charmander</span>
             </button>
-            <button id="pkm-5" class="pkm">
+            <button id="pkm-5" class="pkm" value="5">
                 <img src="assets/images/pkm-squirtle.png" alt="Squirtle">
                 <span>Squirtle</span>
             </button>
-            <button id="pkm-6" class="pkm">
+            <button id="pkm-6" class="pkm" value="6">
                 <img src="assets/images/pkm-weddle.png" alt="Weddle">
                 <span>Weddle</span>
-            </button>
+            </button> -->
         </div>
         <div class="chosen">
             <div class="your-choice"></div>
+        </div>
+        <div class="enemy-random">
+            <div class="enemy-item"></div>
         </div>
 
     </div>
 
     <script>
-
         function game() {
             window.gameObj = {
                 attackDone: false,
@@ -65,6 +67,7 @@
                 gameOver: false,
                 pokemonsList: [
                     {
+                        id: 1,
                         name: 'Pikachu',
                         image: 'assets/images/pkm-pikachu.png',
                         hp: 200,
@@ -72,6 +75,7 @@
                         counterAttack: 20
                     },
                     {
+                        id: 2,
                         name: 'Bulbasaur',
                         image: 'assets/images/pkm-bulbasaur.png',
                         hp: 130,
@@ -79,6 +83,7 @@
                         counterAttack: 25
                     },
                     {
+                        id: 3,
                         name: 'Ponyta',
                         image: 'assets/images/pkm-ponyta.png',
                         hp: 180,
@@ -86,6 +91,7 @@
                         counterAttack: 15
                     },
                     {
+                        id: 4,
                         name: 'Charmander',
                         image: 'assets/images/pkm-charmander.png',
                         hp: 110,
@@ -93,6 +99,7 @@
                         counterAttack: 20
                     },
                     {
+                        id: 5,
                         name: 'Squirtle',
                         image: 'assets/images/pkm-squirtle.png',
                         hp: 90,
@@ -100,22 +107,29 @@
                         counterAttack: 20
                     },
                     {
+                        id: 6,
                         name: 'Weddle',
                         image: 'assets/images/pkm-weddle.png',
                         hp: 100,
                         attack: 8,
                         counterAttack: 10
-                    },
-
-                ]
+                    }
+                ],
+                gameStart: true,
+                yourPokemon: null,
+                enemy: null,
+                currentAttack: null
             }
         }
 
         $(document).ready(function () {
-
+            game();
             // Gets Link for Theme Song
-            var audioElement = document.createElement("audio");
-            audioElement.setAttribute("src", "assets/audio.mp3");
+            var audioElement = document.createElement('audio');
+            audioElement.setAttribute('src', 'assets/audio.mp3');
+
+            // Global variables
+            var pkmArrayList = gameObj.pokemonsList;
 
             // Play song button
             $(".audio-play").on("click", function () {
@@ -126,29 +140,38 @@
                 audioElement.pause();
             });
 
-            // HP
+            console.log(gameObj.pokemonsList)
 
+            // Pokemon list
+            function pokemonList() {
+                var pkmArrayList = gameObj.pokemonsList;
 
-            // Pokemons
+                for (var i = 0; i < pkmArrayList.length; i++) {
+                    var pokemonDiv = $('<div class="pkm" id="pkm-' + pkmArrayList[i].id + '"></div>')
 
-            $('#pkm-1').on('click', function () {
-                $('.your-choice').prepend('<img class="your-choice-item" src="assets/images/pkm-pikachu.png"/>' + '<div class="hp"><h3>HP: ' + 100 + '</h3 ></div > ')
-            })
-            $('#pkm-2').on('click', function () {
-                $('.your-choice').prepend('<img class="your-choice-item" src="assets/images/pkm-bulbasaur.png"/>' + '<div class="hp"><h3>HP: ' + 100 + '</h3 ></div > ')
-            })
-            $('#pkm-3').on('click', function () {
-                $('.your-choice').prepend('<img class="your-choice-item" src="assets/images/pkm-ponyta.png"/>' + '<div class="hp"><h3>HP: ' + 100 + '</h3 ></div > ')
-            })
-            $('#pkm-4').on('click', function () {
-                $('.your-choice').prepend('<img class="your-choice-item" src="assets/images/pkm-charmander.png"/>' + '<div class="hp"><h3>HP: ' + 100 + '</h3 ></div > ')
-            })
-            $('#pkm-5').on('click', function () {
-                $('.your-choice').prepend('<img class="your-choice-item" src="assets/images/pkm-squirtle.png"/>' + '<div class="hp"><h3>HP: ' + 100 + '</h3 ></div > ')
-            })
-            $('#pkm-6').on('click', function () {
-                $('.your-choice').prepend('<img class="your-choice-item" src="assets/images/pkm-weddle.png"/>' + '<div class="hp"><h3>HP: ' + 100 + '</h3 ></div > ')
-            })
+                    var pokemonImg = $('<img src="' + pkmArrayList[i].image + '" alt="' + pkmArrayList[i].name + '"/>')
+                    var pokemonName = $('<span>' + pkmArrayList[i].name + '</span>');
+
+                    var appendDiv = $('#pokemons').append(pokemonDiv);
+                    $(pokemonDiv).html(pokemonImg).append(pokemonName);
+                }
+            }
+            pokemonList();
+
+            // Select pokemon
+            function yourPokemon() {
+                $("#pokemons").on("click", ".pkm", function () {
+                    var chosen = $(this).attr('id');
+                    var img = $(this).children()[0];
+                    console.log(img);
+                    var imgChildren = $('.your-choice').html(img);
+                    $(imgChildren).attr('class', 'your-choice-item')
+                })
+            }
+            yourPokemon();
+
+            // Select enemy 
+
         })
     </script>
     <!-- <script src="javascript/game.js" async></script> -->
