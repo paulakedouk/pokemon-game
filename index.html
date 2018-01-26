@@ -46,7 +46,7 @@
                         name: 'Pikachu',
                         image: 'assets/images/pkm-pikachu.png',
                         hp: 200,
-                        attack: 12,
+                        attack: 10,
                         counterAttack: 33
                     },
                     {
@@ -95,7 +95,7 @@
                 enemy: [
                     {
                         hp: 210,
-                        attack: 33,
+                        attack: 13,
                     }
                 ],
                 currentAttack: null
@@ -125,15 +125,22 @@
             });
 
             // Pokemon list
-            for (var i = 0; i < pkmArrayList.length; i++) {
-                var pokemonDiv = $('<div class="pkm" id="pkm-' + pkmArrayList[i].id + '"></div>')
+            function startGame() {
+                for (var i = 0; i < pkmArrayList.length; i++) {
+                    var pokemonDiv = $('<div class="pkm" id="pkm-' + pkmArrayList[i].id + '"></div>')
 
-                var pokemonImg = $('<img src="' + pkmArrayList[i].image + '" alt="' + pkmArrayList[i].name + '"/>')
-                var pokemonName = $('<span>' + pkmArrayList[i].name + '</span>');
-                var pokemonHp = $('<div class="hp">' + pkmArrayList[i].hp + '</div>')
+                    var pokemonImg = $('<img src="' + pkmArrayList[i].image + '" alt="' + pkmArrayList[i].name + '"/>')
+                    var pokemonName = $('<span>' + pkmArrayList[i].name + '</span>');
+                    var pokemonHp = $('<div class="hp">' + pkmArrayList[i].hp + '</div>')
 
-                $('#pokemons').append(pokemonDiv);
-                $(pokemonDiv).html(pokemonImg).append(pokemonName, pokemonHp)
+                    $('#pokemons').append(pokemonDiv);
+                    $(pokemonDiv).html(pokemonImg).append(pokemonName, pokemonHp)
+                }
+            }
+            startGame()
+
+            function reset() {
+
             }
 
             // Select pokemon
@@ -157,7 +164,7 @@
                 var enemyDiv = $('<div class="enemy">');
                 var enemyName = $('<span>Onix</span>')
                 var enemyImg = $('<img src="assets/images/pkm-enemy.png" alt="Enemy" />');
-                var enemyHp = $('<div class="hp-enemy">' + 200 + '</div>');
+                var enemyHp = $('<div class="hp-enemy">' + 210 + '</div>');
                 $("#pokemons").css("display", "inline-block");
 
                 $('.enemies').append(enemyDiv);
@@ -169,35 +176,34 @@
                 $('.pkm').remove()
 
                 // Attack button
-
-
                 $('#attack').on('click', function (e) {
                     if (this.id == 'attack') {
                         gameObj.attackDone = true;
 
-                        for (var i = 0; i < pkmArrayList.length; i++) {
-                            var pkmAttack = pkmArrayList[i].attack;
-                        }
-
-                        for (var i = 0; i < enemyArrayList.length; i++) {
-                            var enemyAttack = enemyArrayList[i].attack;
-                        }
+                        var pkmAttack = (Math.floor(Math.random() * 55));
+                        var enemyAttack = (Math.floor(Math.random() * 70));
 
                         var currentEnemyHp = $(enemyHp).text();
                         currentEnemyHp = currentEnemyHp - pkmAttack;
                         $('.hp-enemy').text(currentEnemyHp);
-                        console.log(currentEnemyHp)
+                        // console.log(currentEnemyHp, enemyAttack)
 
                         var currentYourHp = $(hp).text();
                         currentYourHp = currentYourHp - enemyAttack;
                         $('.hp').text(currentYourHp);
 
+                        if (currentYourHp <= 0) {
+                            alert('You lost!');
+                            location.reload();
+
+                        } else if (currentEnemyHp <= 0) {
+                            alert('You WIN!');
+                            location.reload();
+                        }
                     }
                 })
 
             })
-
-
 
 
         })
