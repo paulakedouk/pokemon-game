@@ -109,3 +109,29 @@ body {
   visibility: hidden;
   cursor: pointer;
 }
+
+@media screen and (max-width: 960px) {
+  #pokemons {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .pkm {
+    margin-bottom: 20px;
+  }
+  .your-choice-item {
+    max-width: 180px;
+  }
+  .your-choice-item img {
+    width: 200px;
+    height: 170px;
+  }
+  .enemy {
+    max-width: 200px;
+  }
+  .enemy img {
+    width: 180px;
+    height: 170px;
+  }
+}

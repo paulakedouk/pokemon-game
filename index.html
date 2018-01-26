@@ -92,14 +92,13 @@
                 ],
                 gameStart: true,
                 yourPokemon: null,
+                currentAttack: null,
                 enemy: [
                     {
                         hp: 210,
                         attack: 13,
                     }
-                ],
-                currentAttack: null
-
+                ]
             }
         }
 
@@ -138,10 +137,6 @@
                 }
             }
             startGame()
-
-            function reset() {
-
-            }
 
             // Select pokemon
             $("#pokemons").on("click", ".pkm", function () {
