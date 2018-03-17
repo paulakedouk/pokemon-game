@@ -1,13 +1,17 @@
-## :fire: RPG Game :fire:
+## :fire: Pokemon RPG Game :fire:
+UC Berkeley - Coding Bootcamp Project
 
-UC Berkeley - Coding Bootcamp
+<img src="assets/images/pokemon.gif" />
 
-### Overview
+## Overview
 
-This is a classic RPG.
+This is a classic RPG. When the game starts, the player will choose a character by clicking on the pokemon's picture. The player will fight as that pokemon for the rest of the game.
 
-The Frontend uses HTML, CSS and JavaScript and jQuery.
+## Built with
 
-### License
+* HTML
+* CSS
+* JavaScript and jQuery
 
-MIT
+
+
